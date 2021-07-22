@@ -114,6 +114,11 @@ class Lambdasian {
   }
 }
 
+
+
+
+
+
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -136,12 +141,27 @@ class Instructor extends Lambdasian{
     this.catchPhrase = attributes.catchPhrase;
   }
   demo(){
-    return `Today we are learning about ${this.subject}.`
+    return `Today we are learning about ${this.subject}.`;
   }
   grade(){
-    return `${this.Student} receives a perfect score on ${this.subject}`
+    return `${this.name} receives a perfect score on ${this.subject}`;
   }
 }
+
+const instructorTest = new Instructor({
+  name: "Bob",
+  age:  "1",
+  location: "USA",
+  specialty: "redux",
+  favLanguage: "JavaScript, Python, Elm etc.",
+  catchPhrase: "Don't forget the homies",
+});
+
+console.log('Task 4:', instructorTest);
+
+
+
+
 
 
 
@@ -160,9 +180,32 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-   
+class Student extends Lambdasian{
+   constructor(attributes){
+     super(attributes);
+     this.previousBackground = attributes.previousBackground;
+     this.className = attributes.className;
+     this.favSubjects = ['HTML', 'CSS', 'JS'];
+   }
+   listSubjects(){
+     returns `Loving ${this.favSubjects}!`;
+   }
+   PRAssignment(){
+     return `${this.name} has submitted a PR for ${this.subject}`;
+   }
+   sprintChallenge (){
+     return `${this.name} has begun sprint challenge on ${this.subject}`
+   }
 }
+
+
+
+
+
+
+
+
+
 
 /*
   TASK 6
