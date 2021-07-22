@@ -203,7 +203,7 @@ class Student extends Lambdasian{
      this.favSubjects = attributes.favSubjects;
    }
    listSubjects(){
-     return `Loving ${this.favSubjects}, ${this.favSubjects}, ${this.favSubjects}!`;
+     return `Loving ${this.favSubjects[0]}, ${this.favSubjects[1]}, ${this.favSubjects[2]}!`;
    }
    PRAssignment(subject){
      return `${this.name} has submitted a PR for ${subject}`;
@@ -245,14 +245,14 @@ const studentTest = new Lambdasian({
 class ProjectManager extends Instructor{
    constructor(attributes){
      super(attributes);
-     this.gradClassName = attributes.gradeClassName
+     this.gradClassName = attributes.gradClassName
      this.favInstructor = attributes.favInstructor
    }
-   standUp(){
-     return `${this.name} announces to ${this.channel}, @channel standy times!`;
+   standUp(channel){
+     return `${this.name} announces to ${channel}, @channel standy times!`;
    }
-   debugsCode(){
-     return `${this.name} debugs ${this.student.name}'s code on ${this.subject}`;
+   debugsCode(student, subject){
+     return `${this.name} debugs ${student.name}'s code on ${subject}`;
    }
 }
 
