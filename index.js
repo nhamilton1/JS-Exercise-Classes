@@ -85,7 +85,15 @@ class Car {
     this.tank += gallons
   }
   drive(distance){
-   
+   const driveableMiles = this.tank * this.milesPerGallon;
+   if(distance <= driveableMiles){
+     this.odometer = this.odometer + distance;
+     this.tank = this.tank - (distance /this.milesPerGallon);
+   }else{
+     this.tank = 0;
+     this.odometer = this.odometer + driveableMiles;
+     return `I ran out of fuel at ${this.odometer} miles`;
+   }
   }
 }
 
@@ -157,7 +165,7 @@ const instructorTest = new Instructor({
   catchPhrase: "Don't forget the homies",
 });
 
-console.log('Task 4:', instructorTest);
+console.log('Task 4:', instructorTest.demo());
 
 
 
@@ -200,9 +208,16 @@ class Student extends Lambdasian{
 
 
 
+const studentTest = new Lambdasian({
+  name: "Bob",
+  age:  "1",
+  location: "USA",
+  previousBackground: "Study",
+  className: "CS132",
+  favSubjects: "HTML",
+});
 
-
-
+console.log('Task 4:',studentTest);
 
 
 
@@ -220,9 +235,29 @@ class Student extends Lambdasian{
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+   constructor(attributes){
+     super(arguments);
+     this.gradClassName = attributes.gradeClassName
+     this.favInstructor = attributes.favInstructor
+   }
+   standUp(){
+     return `${this.name} announces to ${this.channel}, @channel standy times!`;
+   }
+   debugsCode(){
+     return `${this.name} debugs ${this.student.name}'s code on ${this.subject}`;
+   }
 }
+
+
+
+
+
+
+
+
+
+
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
