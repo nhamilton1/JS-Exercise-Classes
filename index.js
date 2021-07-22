@@ -122,8 +122,13 @@ class Lambdasian {
   }
 }
 
+const parent = new Lambdasian({
+  name: 'Joe',
+  age: 29,
+  location: 'Home'
+});
 
-
+console.log(parent.speak('hi'))
 
 
 
@@ -148,13 +153,14 @@ class Instructor extends Lambdasian{
     this.favLanguage = attributes.favLanguage;
     this.catchPhrase = attributes.catchPhrase;
   }
-  demo(){
-    return `Today we are learning about ${this.subject}.`;
+  demo(subject){
+    return `Today we are learning about ${subject}.`;
   }
-  grade(){
-    return `${this.name} receives a perfect score on ${this.subject}`;
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
+
 
 const instructorTest = new Instructor({
   name: "Bob",
@@ -165,7 +171,8 @@ const instructorTest = new Instructor({
   catchPhrase: "Don't forget the homies",
 });
 
-console.log('Task 4:', instructorTest.demo());
+// console.log('Task 4:', instructorTest.demo('JS'));
+// console.log('Task 4:', instructorTest.grade(instructorTest));
 
 
 
@@ -193,16 +200,16 @@ class Student extends Lambdasian{
      super(attributes);
      this.previousBackground = attributes.previousBackground;
      this.className = attributes.className;
-     this.favSubjects = ['HTML', 'CSS', 'JS'];
+     this.favSubjects = attributes.favSubjects;
    }
    listSubjects(){
-     returns `Loving ${this.favSubjects}!`;
+     return `Loving ${this.favSubjects}, ${this.favSubjects}, ${this.favSubjects}!`;
    }
-   PRAssignment(){
-     return `${this.name} has submitted a PR for ${this.subject}`;
+   PRAssignment(subject){
+     return `${this.name} has submitted a PR for ${subject}`;
    }
-   sprintChallenge (){
-     return `${this.name} has begun sprint challenge on ${this.subject}`
+   sprintChallenge (subject){
+     return `${this.name} has begun sprint challenge on ${subject}`
    }
 }
 
@@ -214,10 +221,10 @@ const studentTest = new Lambdasian({
   location: "USA",
   previousBackground: "Study",
   className: "CS132",
-  favSubjects: "HTML",
+  favSubjects: ['HTML', 'CSS', 'JS'],
 });
 
-console.log('Task 4:',studentTest);
+// console.log('Task 4:',studentTest.sprintChallenge('JS'));
 
 
 
@@ -237,7 +244,7 @@ console.log('Task 4:',studentTest);
 */
 class ProjectManager extends Instructor{
    constructor(attributes){
-     super(arguments);
+     super(attributes);
      this.gradClassName = attributes.gradeClassName
      this.favInstructor = attributes.favInstructor
    }
